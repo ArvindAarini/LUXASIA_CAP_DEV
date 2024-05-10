@@ -14,11 +14,6 @@
       "object": "MAKT"
     }
   },
-  "STORES_MVKE": {
-    "target": {
-      "object": "MVKE"
-    }
-  },
   "STORES_WRF_BRANDS_T": {
     "target": {
       "object": "WRF_BRANDS_T"
