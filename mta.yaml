@@ -1,0 +1,60 @@
+_schema-version: '3.1'
+ID: LUXASIA_CAP_DEV
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npx -p @sap/cds-dk cds build --production
+modules:
+  - name: LUXASIA_CAP_DEV-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: LUXASIA_CAP_DEV-db
+      # - name: LUXASIA_CAP_DEV_XSUAA
+
+  - name: LUXASIA_CAP_DEV-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: LUXASIA_CAP_DEV-db
+        properties:
+           TARGET_CONTAINER: ~{hdi-service-name}
+      - name: UPS_Luxasia
+
+resources:
+  - name: LUXASIA_CAP_DEV-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service-name: LUXASIA_CAP_DEV_HDI
+      config:
+        schema: LUXASIA_CAP_DEV
+        makeUniqueName: false
+    properties:
+      hdi-service-name: ${service-name}
+
+  # - name: LUXASIA_CAP_DEV_XSUAA
+  #   type: org.cloudfoundry.existing-service
+  #   parameters:
+  #     path: ./xs-security.json
+  #     service-plan: application
+  #     service: xsuaa
+
+  - name: UPS_Luxasia
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: UPS_Luxasia

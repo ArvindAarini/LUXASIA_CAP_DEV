@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" id="Product_Cost" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="Product_Cost.hdbcalculationview"/>
+<localVariables>
+  <variable id="IP_DATE" parameter="true">
+    <descriptions defaultDescription=" "/>
+    <variableProperties datatype="NVARCHAR" length="8" mandatory="false">
+      <valueDomain type="Date"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+  <variable id="IP_WERKS" parameter="true">
+    <descriptions defaultDescription=" "/>
+    <variableProperties datatype="NVARCHAR" length="4" mandatory="true">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+  <variable id="IP_VTWEG" parameter="true">
+    <descriptions defaultDescription=" "/>
+    <variableProperties datatype="NVARCHAR" length="2" mandatory="false" defaultValue="10">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+
+  <variable id="IP_BRAND_ID" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="NVARCHAR" length="18" mandatory="true">
+      <valueDomain type="empty"/>
+      <selection multiLine="true" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="Product_Cost_Botique">
+    <targetVariable name="IP_DATE" resourceUri="Product_Cost_Botique"/>
+    <localVariable>IP_DATE</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="Product_Cost_Botique">
+    <targetVariable name="IP_WERKS" resourceUri="Product_Cost_Botique"/>
+    <localVariable>IP_WERKS</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="Product_Cost_Botique">
+    <targetVariable name="IP_VTWEG" resourceUri="Product_Cost_Botique"/>
+    <localVariable>IP_VTWEG</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="Product_Cost_NonBotique">
+    <targetVariable name="IP_DATE" resourceUri="Product_Cost_NonBotique"/>
+    <localVariable>IP_DATE</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="Product_Cost_NonBotique">
+    <targetVariable name="IP_WERKS" resourceUri="Product_Cost_NonBotique"/>
+    <localVariable>IP_WERKS</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="Product_Cost_NonBotique">
+    <targetVariable name="IP_VTWEG" resourceUri="Product_Cost_NonBotique"/>
+    <localVariable>IP_VTWEG</localVariable>
+  </mapping>
+</variableMappings>
+<dataSources>
+  <DataSource id="Product_Cost_Botique">
+    <resourceUri>Product_Cost_Botique</resourceUri>
+  </DataSource>
+  <DataSource id="Product_Cost_NonBotique">
+    <resourceUri>Product_Cost_NonBotique</resourceUri>
+  </DataSource>
+  <DataSource id="T006A">
+    <resourceUri>T006A</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="MEINS"/>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="WERKS"/>
+      <viewAttribute id="LGORT"/>
+      <viewAttribute id="LABST" aggregationType="sum"/>
+      <viewAttribute id="ERSDA"/>
+      <viewAttribute id="MAKTX"/>
+      <viewAttribute id="MAKTG"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="VTWEG"/>
+      <viewAttribute id="VRKME"/>
+      <viewAttribute id="MRART"/>
+      <viewAttribute id="mMEINE"/>
+      <viewAttribute id="EAN11"/>
+      <viewAttribute id="VKORG"/>
+      <viewAttribute id="KMEIN"/>
+      <viewAttribute id="KONWA"/>
+      <viewAttribute id="KBETR" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Product_Cost_Botique" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTX" source="MAKTX"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTG" source="MAKTG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VRKME" source="VRKME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRART" source="MRART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="mMEINE" source="mMEINE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KMEIN" source="KMEIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KONWA" source="KONWA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KBETR" source="KBETR"/>
+    </input>
+    <input node="Product_Cost_NonBotique" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MEINS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTX" source="MAKTX"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTG" source="MAKTG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VRKME" source="VRKME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRART" source="MRART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="mMEINE" source="mMEINE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KMEIN" source="KMEIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KONWA" source="KONWA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KBETR" source="KBETR"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="MSEH3"/>
+      <viewAttribute id="MSEHI"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="T006A"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MEINS"/>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="WERKS"/>
+      <viewAttribute id="LGORT"/>
+      <viewAttribute id="LABST" aggregationType="sum"/>
+      <viewAttribute id="ERSDA"/>
+      <viewAttribute id="MAKTX"/>
+      <viewAttribute id="MAKTG"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="VTWEG"/>
+      <viewAttribute id="VRKME"/>
+      <viewAttribute id="MRART"/>
+      <viewAttribute id="mMEINE"/>
+      <viewAttribute id="EAN11"/>
+      <viewAttribute id="VKORG"/>
+      <viewAttribute id="KMEIN"/>
+      <viewAttribute id="KONWA"/>
+      <viewAttribute id="KBETR" aggregationType="sum"/>
+      <viewAttribute hidden="true" id="JOIN$MEINS$MSEHI"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Union_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTX" source="MAKTX"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTG" source="MAKTG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VRKME" source="VRKME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRART" source="MRART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="mMEINE" source="mMEINE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KMEIN" source="KMEIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KONWA" source="KONWA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KBETR" source="KBETR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MEINS$MSEHI" source="MEINS"/>
+    </input>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MEINS" source="MSEH3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MEINS$MSEHI" source="MSEHI"/>
+    </input>
+    <filter>&quot;BRAND_ID&quot; in ($$IP_BRAND_ID$$)</filter>
+    <joinAttribute name="JOIN$MEINS$MSEHI"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="ARTICLENO" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATNR"/>
+      <keyMapping columnObjectName="Join_1" columnName="MATNR"/>
+    </attribute>
+    <attribute id="STLOC" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LGORT"/>
+      <keyMapping columnObjectName="Join_1" columnName="LGORT"/>
+    </attribute>
+    <attribute id="ARTICLEDESC" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MAKTX"/>
+      <keyMapping columnObjectName="Join_1" columnName="MAKTX"/>
+    </attribute>
+    <attribute id="STOREID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WERKS"/>
+      <keyMapping columnObjectName="Join_1" columnName="WERKS"/>
+    </attribute>
+    <attribute id="UOM" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MEINS"/>
+      <keyMapping columnObjectName="Join_1" columnName="MEINS"/>
+    </attribute>
+    <attribute id="BRAND_ID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRAND_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="BRAND_ID"/>
+    </attribute>
+    <attribute id="BARCODE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EAN11"/>
+      <keyMapping columnObjectName="Join_1" columnName="EAN11"/>
+    </attribute>
+    <attribute id="CURRENCY" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KONWA"/>
+      <keyMapping columnObjectName="Join_1" columnName="KONWA"/>
+    </attribute>
+  
+    <attribute id="ARTICLETYPE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MRART"/>
+  
+      <keyMapping columnObjectName="Join_1" columnName="MRART"/>
+  
+    </attribute>
+    <attribute id="ERSDA" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ERSDA"/>
+      <keyMapping columnObjectName="Join_1" columnName="ERSDA"/>
+    </attribute>
+    <attribute id="MAKTG" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MAKTG"/>
+      <keyMapping columnObjectName="Join_1" columnName="MAKTG"/>
+    </attribute>
+    <attribute id="SPRAS" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SPRAS"/>
+      <keyMapping columnObjectName="Join_1" columnName="SPRAS"/>
+    </attribute>
+    <attribute id="VTWEG" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VTWEG"/>
+      <keyMapping columnObjectName="Join_1" columnName="VTWEG"/>
+    </attribute>
+    <attribute id="VRKME" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="mvkeVRKME"/>
+      <keyMapping columnObjectName="Join_1" columnName="VRKME"/>
+    </attribute>
+    <attribute id="MMEINE" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="mMEINE"/>
+      <keyMapping columnObjectName="Join_1" columnName="mMEINE"/>
+    </attribute>
+    <attribute id="VKORG" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VKORG"/>
+      <keyMapping columnObjectName="Join_1" columnName="VKORG"/>
+    </attribute>
+    <attribute id="KMEIN" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KMEIN"/>
+      <keyMapping columnObjectName="Join_1" columnName="KMEIN"/>
+    </attribute></attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="RETAILPRICE" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="KBETR"/>
+      <measureMapping columnObjectName="Join_1" columnName="KBETR"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  
+    <measure id="AVAILABLEQTY" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="LABST"/>
+      <measureMapping columnObjectName="Join_1" columnName="LABST"/>
+      <exceptionAggregationMetadata/>
+    </measure></baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="221" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="221" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Union_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>

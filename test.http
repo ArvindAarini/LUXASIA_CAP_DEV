@@ -1,0 +1,55 @@
+# POST https://luxasia-otc-npr-cf-ap11-development-luxasia-cap-srv.cfapps.ap11.hana.ondemand.com/odata/v4/data-model/USERS
+# Content-Type: application/json
+
+#  {
+#     "EMAIL_ID":"muzammil@gmail.com",
+#      "STORE_ID":"5001"
+#      }
+
+
+    # POST  https://luxasia-otc-npr-cf-ap11-development-luxasia-cap-srv.cfapps.ap11.hana.ondemand.com/odata/v4/data-model/STORES
+    # Content-Type: application/json
+
+    # {
+    #   "STORE_ID":5002,
+    #   "BRAND_ID":"AAA"
+    # }
+
+    # POST https://luxasia-otc-npr-cf-ap11-development-luxasia-cap-srv.cfapps.ap11.hana.ondemand.com/odata/v4/data-model/BRANDS
+    # Content-Type: application/json
+
+    # {
+    #   "BRAND_ID":103,
+    #   "BRAND_DESC":"ADP3"
+    # }
+
+
+  #   POST https://luxasia-otc-npr-cf-ap11-development-luxasia-cap-srv.cfapps.ap11.hana.ondemand.com/odata/v4/data-model/BRANDS
+  #   Content-Type: application/json
+
+  #   {
+  #  "email" : "ashwin1@gmail.com",
+  #  "storeID" : "5003",
+  #  "BRANDID" : "ADPLLP",
+  # "BrandDESC" : "BURBERRYCALVIN"
+  #   }
+
+  PATCH https://luxasia-otc-npr-cf-ap11-development-luxasia-cap-srv.cfapps.ap11.hana.ondemand.com/odata/v4/data-model/USERS(Email='ashwin1@gmail.com',sID='5010')
+  Content-Type: application/json
+
+
+{
+"Email":"ashwin1@gmail.com",
+"sID": "5010",
+"brands" :[
+  {
+    "email" : "ashwin1@gmail.com",
+   "storeID" : "5010",
+   "BRANDID" : "PATCHADPLLP",
+   "BrandDESC" : "PATCHBURBERRYCALVIN"
+  }
+]
+}
+
+   
+  

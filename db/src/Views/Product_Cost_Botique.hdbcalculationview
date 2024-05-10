@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="Product_Cost_Botique" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="Salesorg.hdbcalculationview"/>
+<localVariables>
+  <variable id="IP_DATE" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="DATE" mandatory="false" defaultExpressionLanguage="SQL">
+      <valueDomain type="Date"/>
+      <selection multiLine="false" type="SingleValue"/>
+      <defaultExpression>to_char(current_date,'YYYYMMDD')</defaultExpression>
+    </variableProperties>
+  </variable>
+  <variable id="IP_WERKS" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="NVARCHAR" length="4" mandatory="true">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+  <variable id="IP_VKORG" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties mandatory="false" defaultValue="" datatype="NVARCHAR" length="4">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+      <derivationRule>
+        <resourceUri>T001W</resourceUri>
+        <resultElementName>VKORG</resultElementName>
+      </derivationRule>
+    </variableProperties>
+  </variable>
+  <variable id="IP_VTWEG" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="NVARCHAR" length="2" mandatory="false" defaultValue="10">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="A073$$$$A073$$">
+    <resourceUri>A073</resourceUri>
+  </DataSource>
+  <DataSource id="KONP$$$$KONP$$">
+    <resourceUri>KONP</resourceUri>
+  </DataSource>
+  <DataSource id="ZSDR_PS_CE_DV_Load">
+    <resourceUri>ZSDR_PS_CE_DV_Load</resourceUri>
+  </DataSource>
+  <DataSource id="MAKT$$$$MAKT$$">
+    <resourceUri>MAKT</resourceUri>
+  </DataSource>
+  <DataSource id="ZSDR_PS_CE_MVKE$$$$ZSDR_PS_CE_MVKE$$">
+    <resourceUri>ZSDR_PS_CE_MVKE</resourceUri>
+  </DataSource>
+  <DataSource id="T001W">
+    <resourceUri>T001W</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="A073" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="KAPPL"/>
+      <viewAttribute id="KSCHL"/>
+      <viewAttribute id="VKORG"/>
+      <viewAttribute id="VTWEG"/>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="VRKME"/>
+      <viewAttribute id="DATBI"/>
+      <viewAttribute id="DATAB"/>
+      <viewAttribute id="KNUMH"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="A073$$$$A073$$"/>
+    <filter>&quot;KAPPL&quot; = 'V' and
+&quot;KSCHL&quot;= 'VKP0' and
+&quot;VTWEG&quot;='10' and 
+&quot;DATAB&quot; &lt;= '$$IP_DATE$$' and &quot;DATBI&quot; &gt;= '$$IP_DATE$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="KONP" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="KNUMH"/>
+      <viewAttribute id="KOPOS"/>
+      <viewAttribute id="KAPPL"/>
+      <viewAttribute id="KSCHL"/>
+      <viewAttribute id="KNUMT"/>
+      <viewAttribute id="STFKZ"/>
+      <viewAttribute id="KZBZG"/>
+      <viewAttribute id="KSTBM"/>
+      <viewAttribute id="KONMS"/>
+      <viewAttribute id="KSTBW"/>
+      <viewAttribute id="KONWS"/>
+      <viewAttribute id="KRECH"/>
+      <viewAttribute id="KBETR"/>
+      <viewAttribute id="KONWA"/>
+      <viewAttribute id="KPEIN"/>
+      <viewAttribute id="KMEIN"/>
+      <viewAttribute id="PRSCH"/>
+      <viewAttribute id="KUMZA"/>
+      <viewAttribute id="KUMNE"/>
+      <viewAttribute id="MEINS"/>
+      <viewAttribute id="MXWRT"/>
+      <viewAttribute id="GKWRT"/>
+      <viewAttribute id="PKWRT"/>
+      <viewAttribute id="FKWRT"/>
+      <viewAttribute id="RSWRT"/>
+      <viewAttribute id="KWAEH"/>
+      <viewAttribute id="UKBAS"/>
+      <viewAttribute id="KZNEP"/>
+      <viewAttribute id="KUNNR"/>
+      <viewAttribute id="LIFNR"/>
+      <viewAttribute id="MWSK1"/>
+      <viewAttribute id="LOEVM_KO"/>
+      <viewAttribute id="ZAEHK_IND"/>
+      <viewAttribute id="BOMAT"/>
+      <viewAttribute id="KBRUE"/>
+      <viewAttribute id="KSPAE"/>
+      <viewAttribute id="BOSTA"/>
+      <viewAttribute id="KNUMA_PI"/>
+      <viewAttribute id="KNUMA_AG"/>
+      <viewAttribute id="KNUMA_SQ"/>
+      <viewAttribute id="VALTG"/>
+      <viewAttribute id="VALDT"/>
+      <viewAttribute id="ZTERM"/>
+      <viewAttribute id="ANZAUF"/>
+      <viewAttribute id="MIKBAS"/>
+      <viewAttribute id="MXKBAS"/>
+      <viewAttribute id="KOMXWRT"/>
+      <viewAttribute id="KLF_STG"/>
+      <viewAttribute id="KLF_KAL"/>
+      <viewAttribute id="VKKAL"/>
+      <viewAttribute id="AKTNR"/>
+      <viewAttribute id="KNUMA_BO"/>
+      <viewAttribute id="MWSK2"/>
+      <viewAttribute id="VERTT"/>
+      <viewAttribute id="VERTN"/>
+      <viewAttribute id="VBEWA"/>
+      <viewAttribute id="MDFLG"/>
+      <viewAttribute id="KFRST"/>
+      <viewAttribute id="UASTA"/>
+      <viewAttribute id="BEV1_ECRTT"/>
+      <viewAttribute id="BEV1_ECRTN"/>
+      <viewAttribute id="BEV1_ECEWA"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="KONP$$$$KONP$$"/>
+    <filter>&quot;KSCHL&quot;='VKP0'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ZSDR_PS_CE_DV" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="WERKS"/>
+      <viewAttribute id="LGORT"/>
+      <viewAttribute id="LABST"/>
+      <viewAttribute id="ERSDA"/>
+    
+      <viewAttribute id="MRART"/>
+      <viewAttribute id="mMEINS"/>
+      <viewAttribute id="EAN11"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZSDR_PS_CE_DV_Load">
+      <mapping xsi:type="Calculation:AttributeMapping" target="mMEINS" source="MEINE"/>
+    </input>
+    <filter>&quot;WERKS&quot;='$$IP_WERKS$$' and &quot;LABST&quot;&gt;0</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="MAKT" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="MAKTX"/>
+      <viewAttribute id="MAKTG"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="MAKT$$$$MAKT$$"/>
+    <filter>&quot;SPRAS&quot;='E'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ZSDR_PS_CE_MVKE" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="VKORG"/>
+      <viewAttribute id="VTWEG"/>
+      <viewAttribute id="mvkeVRKME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZSDR_PS_CE_MVKE$$$$ZSDR_PS_CE_MVKE$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="mvkeVRKME" source="VRKME"/>
+    </input>
+    <filter>&quot;VTWEG&quot;='$$IP_VTWEG$$' and
+&quot;VKORG&quot; NOT LIKE '%99'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="VKORG"/>
+      <viewAttribute id="WERKS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="T001W"/>
+    <filter>&quot;WERKS&quot; = '$$IP_WERKS$$'and
+&quot;VKORG&quot; NOT LIKE '%99'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="ZSDR_CDS_PPRICE_CE" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="VKORG"/>
+      <viewAttribute id="prVRKME"/>
+      <viewAttribute id="KNUMH"/>
+      <viewAttribute id="KMEIN"/>
+      <viewAttribute id="KONWA"/>
+      <viewAttribute id="KBETR" aggregationType="sum"/>
+      <viewAttribute hidden="true" id="JOIN$KNUMH$KNUMH"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="A073">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="prVRKME" source="VRKME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$KNUMH$KNUMH" source="KNUMH"/>
+    </input>
+    <input node="KONP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="KNUMH" source="KNUMH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KMEIN" source="KMEIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KONWA" source="KONWA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KBETR" source="KBETR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$KNUMH$KNUMH" source="KNUMH"/>
+    </input>
+    <joinAttribute name="JOIN$KNUMH$KNUMH"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="VKORG"/>
+      <viewAttribute id="VTWEG"/>
+      <viewAttribute id="mvkeVRKME"/>
+    
+      <viewAttribute id="WERKS"/>
+      <viewAttribute hidden="true" id="JOIN$VKORG$VKORG"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZSDR_PS_CE_MVKE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="mvkeVRKME" source="mvkeVRKME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VKORG$VKORG" source="VKORG"/>
+    </input>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$VKORG$VKORG" source="VKORG"/>
+    </input>
+    <joinAttribute name="JOIN$VKORG$VKORG"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="MARA_MARD_MAKT_1" joinType="inner" multiJoinNode="MARA_MARD_MAKT" multiJoinCentralTable="ZSDR_PS_CE_DV" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="WERKS"/>
+      <viewAttribute id="LGORT"/>
+      <viewAttribute id="LABST" aggregationType="sum"/>
+      <viewAttribute id="ERSDA"/>
+      <viewAttribute id="MRART"/>
+      <viewAttribute id="mMEINE"/>
+      <viewAttribute id="EAN11"/>
+      <viewAttribute id="VKORG"/>
+      <viewAttribute hidden="true" id="JOIN$WERKS$WERKS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZSDR_PS_CE_DV">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRART" source="MRART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="mMEINE" source="mMEINS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$WERKS$WERKS" source="WERKS"/>
+    </input>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$WERKS$WERKS" source="WERKS"/>
+    </input>
+    <joinAttribute name="JOIN$WERKS$WERKS"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="MARA_MARD_MAKT_2" cardinality="CN_N" joinType="leftOuter" multiJoinNode="MARA_MARD_MAKT" multiJoinCentralTable="ZSDR_PS_CE_DV" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="WERKS"/>
+      <viewAttribute id="LGORT"/>
+      <viewAttribute id="LABST" aggregationType="sum"/>
+      <viewAttribute id="ERSDA"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="MAKTX"/>
+      <viewAttribute id="MAKTG"/>
+      <viewAttribute id="MRART"/>
+      <viewAttribute id="mMEINE"/>
+      <viewAttribute id="EAN11"/>
+      <viewAttribute id="VKORG"/>
+      <viewAttribute hidden="true" id="JOIN$MATNR$MATNR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="MARA_MARD_MAKT_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRART" source="MRART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="mMEINE" source="mMEINE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MATNR$MATNR" source="MATNR"/>
+    </input>
+    <input node="MAKT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTX" source="MAKTX"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTG" source="MAKTG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MATNR$MATNR" source="MATNR"/>
+    </input>
+    <joinAttribute name="JOIN$MATNR$MATNR"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="WERKS"/>
+      <viewAttribute id="LGORT"/>
+      <viewAttribute id="LABST" aggregationType="sum"/>
+      <viewAttribute id="ERSDA"/>
+      <viewAttribute id="MAKTX"/>
+      <viewAttribute id="MAKTG"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="VTWEG"/>
+      <viewAttribute id="mvkeVRKME"/>
+      <viewAttribute id="MRART"/>
+      <viewAttribute id="mMEINE"/>
+      <viewAttribute id="EAN11"/>
+      <viewAttribute id="VKORG"/>
+      <viewAttribute hidden="true" id="JOIN$MATNR$MATNR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="MARA_MARD_MAKT_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTX" source="MAKTX"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTG" source="MAKTG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRART" source="MRART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="mMEINE" source="mMEINE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MATNR$MATNR" source="MATNR"/>
+    </input>
+    <input node="Join_6">
+      <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="mvkeVRKME" source="mvkeVRKME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MATNR$MATNR" source="MATNR"/>
+    </input>
+    <joinAttribute name="JOIN$MATNR$MATNR"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:NonEquiJoinView" id="NonEquiJoin_1" joinType="rightOuter">
+    <viewAttributes>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="WERKS"/>
+      <viewAttribute id="LGORT"/>
+      <viewAttribute id="LABST" aggregationType="sum"/>
+      <viewAttribute id="ERSDA"/>
+      <viewAttribute id="MAKTX"/>
+      <viewAttribute id="MAKTG"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="VTWEG"/>
+      <viewAttribute id="mvkeVRKME"/>
+      <viewAttribute id="MRART"/>
+      <viewAttribute id="mMEINE"/>
+      <viewAttribute id="EAN11"/>
+      <viewAttribute id="VKORG"/>
+      <viewAttribute id="KMEIN"/>
+      <viewAttribute id="KONWA"/>
+      <viewAttribute id="KBETR" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZSDR_CDS_PPRICE_CE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="KMEIN" source="KMEIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KONWA" source="KONWA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KBETR" source="KBETR"/>
+    </input>
+    <input node="Join_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTX" source="MAKTX"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAKTG" source="MAKTG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VTWEG" source="VTWEG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="mvkeVRKME" source="mvkeVRKME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRART" source="MRART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="mMEINE" source="mMEINE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VKORG" source="VKORG"/>
+    </input>
+    <joinExpression>&quot;Join_3&quot;.&quot;MATNR&quot; = &quot;ZSDR_CDS_PPRICE_CE&quot;.&quot;MATNR&quot; and 
+&quot;Join_3&quot;.&quot;VKORG&quot; = &quot;ZSDR_CDS_PPRICE_CE&quot;.&quot;VKORG&quot; and 
+(&quot;Join_3&quot;.&quot;mvkeVRKME&quot; = &quot;ZSDR_CDS_PPRICE_CE&quot;.&quot;prVRKME&quot; or &quot;Join_3&quot;.&quot;mMEINE&quot; = &quot;ZSDR_CDS_PPRICE_CE&quot;.&quot;prVRKME&quot;)</joinExpression>
+  </calculationView>
+</calculationViews>
+<logicalModel id="NonEquiJoin_1">
+  <attributes>
+    <attribute id="MATNR" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATNR"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="MATNR"/>
+    </attribute>
+    <attribute id="BRAND_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRAND_ID"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="BRAND_ID"/>
+    </attribute>
+    <attribute id="WERKS" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WERKS"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="WERKS"/>
+    </attribute>
+    <attribute id="LGORT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LGORT"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="LGORT"/>
+    </attribute>
+    <attribute id="ERSDA" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ERSDA"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="ERSDA"/>
+    </attribute>
+    <attribute id="MAKTX" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MAKTX"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="MAKTX"/>
+    </attribute>
+    <attribute id="MAKTG" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MAKTG"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="MAKTG"/>
+    </attribute>
+    <attribute id="SPRAS" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SPRAS"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="SPRAS"/>
+    </attribute>
+    <attribute id="VTWEG" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VTWEG"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="VTWEG"/>
+    </attribute>
+    <attribute id="VRKME" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="mvkeVRKME"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="mvkeVRKME"/>
+    </attribute>
+    <attribute id="MRART" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MRART"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="MRART"/>
+    </attribute>
+    <attribute id="mMEINE" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="mMEINE"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="mMEINE"/>
+    </attribute>
+    <attribute id="EAN11" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EAN11"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="EAN11"/>
+    </attribute>
+    <attribute id="VKORG" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VKORG"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="VKORG"/>
+    </attribute>
+    <attribute id="KMEIN" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KMEIN"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="KMEIN"/>
+    </attribute>
+    <attribute id="KONWA" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KONWA"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="KONWA"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="MEINS" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="3">
+        <formula>CASE
+WHEN &quot;KMEIN&quot; is not null then &quot;KMEIN&quot;
+WHEN &quot;VRKME&quot; is not null then &quot;VRKME&quot;
+else &quot;mMEINE&quot; END</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures>
+    <measure id="LABST" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="LABST"/>
+      <measureMapping columnObjectName="NonEquiJoin_1" columnName="LABST"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="KBETR" order="19" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="KBETR"/>
+      <measureMapping columnObjectName="NonEquiJoin_1" columnName="KBETR"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="478" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="A073" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="301" y="536"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="KONP" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="536"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="ZSDR_PS_CE_DV" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="758" y="696"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="MAKT" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="968" y="696"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="ZSDR_PS_CE_MVKE" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="303" y="696"/>
+      <rectangleSize height="30" width="195"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="548" y="696"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="ZSDR_CDS_PPRICE_CE" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="231" y="376"/>
+      <rectangleSize height="30" width="226"/>
+    </shape>
+    <shape modelObjectName="A073" modelObjectNameSpace="ZSDR_CDS_PPRICE_CE" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="136"/>
+    </shape>
+    <shape modelObjectName="KONP" modelObjectNameSpace="ZSDR_CDS_PPRICE_CE" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="511" y="536"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="ZSDR_PS_CE_MVKE" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="136"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="538" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="MARA_MARD_MAKT_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape>
+    <shape modelObjectName="Join_6" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="NonEquiJoin_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="478" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="ZSDR_CDS_PPRICE_CE" modelObjectNameSpace="NonEquiJoin_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="203"/>
+    </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="NonEquiJoin_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="151"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="MARA_MARD_MAKT" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="729" y="540"/>
+      <rectangleSize height="30" width="200"/>
+    </shape>
+    <shape modelObjectName="MAKT" modelObjectNameSpace="MARA_MARD_MAKT" modelObjectType="JoinNodeInput" multiJoinViewNodeName="MARA_MARD_MAKT">
+      <upperLeftCorner x="498" y="24"/>
+      <rectangleSize width="125"/>
+    </shape>
+    <shape modelObjectName="ZSDR_PS_CE_DV" modelObjectNameSpace="MARA_MARD_MAKT" modelObjectType="JoinNodeInput" multiJoinViewNodeName="MARA_MARD_MAKT">
+      <upperLeftCorner x="234" y="27"/>
+      <rectangleSize width="166"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="MARA_MARD_MAKT" modelObjectType="JoinNodeInput" multiJoinViewNodeName="MARA_MARD_MAKT">
+      <upperLeftCorner x="-12" y="75"/>
+      <rectangleSize width="136"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>

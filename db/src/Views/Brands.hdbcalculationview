@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="Brands" applyPrivilegeType="NONE" dataCategory="DIMENSION" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="Brands.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ZSDR_PS_CE_DV_Load">
+    <resourceUri>ZSDR_PS_CE_DV_Load</resourceUri>
+  </DataSource>
+  <DataSource id="WRF_BRANDS_T">
+    <resourceUri>WRF_BRANDS_T</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="BRAND_ID"/>
+    
+      <viewAttribute id="STORE_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZSDR_PS_CE_DV_Load">
+      <mapping xsi:type="Calculation:AttributeMapping" target="STORE_ID" source="WERKS"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="BRAND_DESCR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="WRF_BRANDS_T"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="BRAND_DESCR"/>
+      <viewAttribute id="STORE_ID"/>
+      <viewAttribute hidden="true" id="JOIN$BRAND_ID$BRAND_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="BRAND_TYPE" datatype="NVARCHAR" length="20" expressionLanguage="SQL">
+        <formula>' '</formula>
+      </calculatedViewAttribute></calculatedViewAttributes>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STORE_ID" source="STORE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BRAND_ID$BRAND_ID" source="BRAND_ID"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_DESCR" source="BRAND_DESCR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$BRAND_ID$BRAND_ID" source="BRAND_ID"/>
+    </input>
+    <joinAttribute name="JOIN$BRAND_ID$BRAND_ID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="BRAND_ID" keepFlag="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRAND_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="BRAND_ID"/>
+    </attribute>
+    <attribute id="BRAND_DESCR" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRAND_DESCR"/>
+      <keyMapping columnObjectName="Join_1" columnName="BRAND_DESCR"/>
+    </attribute>
+    <attribute id="BRAND_TYPE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRAND_TYPE"/>
+      <keyMapping columnObjectName="Join_1" columnName="BRAND_TYPE"/>
+    </attribute>
+    <attribute id="STORE_ID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WERKS"/>
+      <keyMapping columnObjectName="Join_1" columnName="STORE_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/></logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="221" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="221" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="141"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="169"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,62 @@
+{
+  "STORES_A073": {
+    "target": {
+      "object": "A073"
+    }
+  },
+  "STORES_KONP": {
+    "target": {
+      "object": "KONP"
+    }
+  },
+  "STORES_MAKT": {
+    "target": {
+      "object": "MAKT"
+    }
+  },
+  "STORES_MVKE": {
+    "target": {
+      "object": "MVKE"
+    }
+  },
+  "STORES_WRF_BRANDS_T": {
+    "target": {
+      "object": "WRF_BRANDS_T"
+    }
+  },
+  "STORES_ZSDR_PS_CE_DV": {
+    "target": {
+      "object": "ZSDR_PS_CE_DV"
+    }
+  },
+  "STORES_ZSD_REFVKORG": {
+    "target": {
+      "object": "ZSD_REFVKORG"
+    }
+  },
+  "STORES_ZSDR_PS_CE_MVKE": {
+    "target": {
+      "object": "ZSDR_PS_CE_MVKE"
+    }
+  },
+  "BRANDS": {
+    "target": {
+      "object": "Brands"
+    }
+  },
+  "PRODUCT_COST": {
+    "target": {
+      "object": "Product_Cost"
+    }
+  },
+  "STORES_ZSDR_PS_CE_DV_LOAD": {
+    "target": {
+      "object": "ZSDR_PS_CE_DV_Load"
+    }
+  },
+  "PRODUCT_STORAGEUNIT": {
+    "target": {
+      "object": "Product_StorageUnit"
+    }
+  }
+}
