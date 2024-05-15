@@ -23,6 +23,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: LUXASIA_CAP_DEV-db
+      - name: Luxasia_CAP_DEV-Auth-auth
       # - name: LUXASIA_CAP_DEV_XSUAA
 
   - name: LUXASIA_CAP_DEV-db-deployer
@@ -33,8 +34,24 @@ modules:
     requires:
       - name: LUXASIA_CAP_DEV-db
         properties:
-           TARGET_CONTAINER: ~{hdi-service-name}
+          TARGET_CONTAINER: ~{hdi-service-name}
       - name: UPS_Luxasia
+
+  - name: LUXASIA_CAP_DEV_AR
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: Luxasia_CAP_DEV-Auth-auth
 
 resources:
   - name: LUXASIA_CAP_DEV-db
@@ -44,6 +61,8 @@ resources:
       config:
         schema: LUXASIA_CAP_DEV
         makeUniqueName: false
+      service: hana
+      service-plan: hdi-shared
     properties:
       hdi-service-name: ${service-name}
 
@@ -58,3 +77,12 @@ resources:
     type: org.cloudfoundry.existing-service
     parameters:
       service-name: UPS_Luxasia
+  - name: Luxasia_CAP_DEV-Auth-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: Luxasia_CAP_DEV-Auth-${org}-${space}
+        tenant-mode: dedicated

@@ -4,9 +4,9 @@ using Brands as _Brands from '../db/data-model';
 using Product_Cost from '../db/data-model';
 using Product_StorageUnit from '../db/data-model';
 
-@requires: 'authenticated-user'
+// @requires: 'authenticated-user'
 
-service LuxasiaSB @(path: '/luxasia/oDataV4') {
+service LuxasiaSB @(path: '/luxasia/oDataV4', requires: 'authenticated-user') {
 
     entity Users         as projection on Luxasia.USER1;
     entity STORE         as projection on Luxasia.STORE1;

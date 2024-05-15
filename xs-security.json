@@ -1,0 +1,21 @@
+{
+ "xsappname": "LUXASIA_CAP_DEV-app",
+ "tenant-mode": "dedicated",
+ "description": "Security profile of called application",
+ "scopes": [
+  {
+   "name": "uaa.user",
+   "description": "UAA"
+  }
+ ],
+ "role-templates": [
+  {
+   "name": "Luxasia_CAP_DEV-Auth",
+   "description": "UAA",
+   "scope-references": [
+    "uaa.user"
+   ]
+  }
+ ],
+ "attributes": []
+}

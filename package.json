@@ -7,48 +7,25 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^7",
+    "express": "^4",
+    "@sap/xssec": "^3",
+    "@sap/xsenv": "4.2.0",
     "@sap/cds-hana": "^2",
     "@sap/cds-odata-v2-adapter-proxy": "^1.7.11",
-    "@sap/hana-client": "^2.6.61",
-    "@sap/hdbext": "^7.6.5",
-    "@sap/hdi-deploy": "^5.0.1",
-    "@sap/xsenv": "4.2.0",
-    "@sap/xssec": "^3",
-    "ci": "^2.3.0",
-    "core-util-is": "^1.0.3",
-    "express": "^4",
     "hdb": "^0.18.3",
-    "passport": "^0",
-    "registry.npmjs.org": "^1.0.1",
-    "sap-hdbext-promisfied": "^2.202206.1"
+    "passport": "^0"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
     "@sap/cds-dk": "^7"
   },
-  "engines": {
-    "node": "^10.0.0 || ^12.0.0 || ^14.0.0 || ^16.0.0 || ^18.0.0"
-  },
   "scripts": {
     "start": "cds-serve"
   },
   "cds": {
-    "hana": {
-      "deploy-format": "hdbtable"
-    },
     "requires": {
-      "auth": "dummy",
-      "db": {
-        "kind": "hana",
-        "model": [
-          "db",
-          "srv"
-        ]
-      }
+      "auth": "xsuaa",
+      "db": "hana"
     }
-  },
-  "files": [
-    "db",
-    "srv"
-  ]
+  }
 }
