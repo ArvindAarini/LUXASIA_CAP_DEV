@@ -56,6 +56,9 @@
   <DataSource id="T001W">
     <resourceUri>T001W</resourceUri>
   </DataSource>
+  <DataSource id="ZSDR_PS_CE_SRV$$$$ZSDR_PS_CE_SRV$$">
+    <resourceUri>ZSDR_PS_CE_SRV</resourceUri>
+  </DataSource>
 </dataSources>
 <snapshotProcedures/>
 <calculationViews>
@@ -206,6 +209,23 @@
     <filter>&quot;WERKS&quot; = '$$IP_WERKS$$'and
 &quot;VKORG&quot; NOT LIKE '%99'</filter>
   </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ZSDR_PS_CE_SRV" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="WERKS"/>
+      <viewAttribute id="LGORT"/>
+      <viewAttribute id="LABST"/>
+      <viewAttribute id="ERSDA"/>
+      <viewAttribute id="MRART"/>
+      <viewAttribute id="MEINE"/>
+      <viewAttribute id="EAN11"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZSDR_PS_CE_SRV$$$$ZSDR_PS_CE_SRV$$"/>
+    <filter>&quot;WERKS&quot;='$$IP_WERKS$$' and &quot;LABST&quot;&gt;=0</filter>
+  </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="ZSDR_CDS_PPRICE_CE" cardinality="CN_N" joinType="inner">
     <viewAttributes>
       <viewAttribute id="MATNR"/>
@@ -259,6 +279,48 @@
     </input>
     <joinAttribute name="JOIN$VKORG$VKORG"/>
   </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="WERKS"/>
+      <viewAttribute id="LGORT"/>
+      <viewAttribute id="LABST" aggregationType="sum"/>
+      <viewAttribute id="ERSDA"/>
+      <viewAttribute id="MRART"/>
+      <viewAttribute id="mMEINS"/>
+      <viewAttribute id="EAN11"/>
+      <viewAttribute id="MEINE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZSDR_PS_CE_DV">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRART" source="MRART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="mMEINS" source="mMEINS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="MEINE" null="true"/>
+    </input>
+    <input node="ZSDR_PS_CE_SRV">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WERKS" source="WERKS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LGORT" source="LGORT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LABST" source="LABST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MRART" source="MRART"/>
+      <mapping xsi:type="Calculation:ConstantAttributeMapping" target="mMEINS" null="true"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MEINE" source="MEINE"/>
+    </input>
+  </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="MARA_MARD_MAKT_1" joinType="inner" multiJoinNode="MARA_MARD_MAKT" multiJoinCentralTable="ZSDR_PS_CE_DV" multiJoinOrder="Outside In">
     <viewAttributes>
       <viewAttribute id="MANDT"/>
@@ -275,7 +337,7 @@
       <viewAttribute hidden="true" id="JOIN$WERKS$WERKS"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="ZSDR_PS_CE_DV">
+    <input node="Union_1">
       <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
@@ -537,7 +599,7 @@ else &quot;mMEINE&quot; END</formula>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="ZSDR_PS_CE_DV" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="758" y="696"/>
+      <upperLeftCorner x="698" y="865"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="MAKT" modelObjectNameSpace="CalculationView">
@@ -584,7 +646,7 @@ else &quot;mMEINE&quot; END</formula>
     <shape modelObjectName="MARA_MARD_MAKT_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
-    </shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape>
+    </shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape><shape><upperLeftCorner/><rectangleSize/></shape>
     <shape modelObjectName="Join_6" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="620" y="30"/>
       <rectangleSize width="250"/>
@@ -610,13 +672,22 @@ else &quot;mMEINE&quot; END</formula>
       <upperLeftCorner x="498" y="24"/>
       <rectangleSize width="125"/>
     </shape>
-    <shape modelObjectName="ZSDR_PS_CE_DV" modelObjectNameSpace="MARA_MARD_MAKT" modelObjectType="JoinNodeInput" multiJoinViewNodeName="MARA_MARD_MAKT">
+    <shape modelObjectName="Union_1" modelObjectNameSpace="MARA_MARD_MAKT" modelObjectType="JoinNodeInput" multiJoinViewNodeName="MARA_MARD_MAKT">
       <upperLeftCorner x="234" y="27"/>
       <rectangleSize width="166"/>
     </shape>
     <shape modelObjectName="Projection_1" modelObjectNameSpace="MARA_MARD_MAKT" modelObjectType="JoinNodeInput" multiJoinViewNodeName="MARA_MARD_MAKT">
       <upperLeftCorner x="-12" y="75"/>
       <rectangleSize width="136"/>
-    </shape></shapes>
+    </shape>
+    <shape expanded="true" modelObjectName="ZSDR_PS_CE_SRV" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="929" y="865"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="749" y="720"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
 </layout>
 </Calculation:scenario>
