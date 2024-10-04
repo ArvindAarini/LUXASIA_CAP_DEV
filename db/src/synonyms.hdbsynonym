@@ -53,5 +53,10 @@
     "target": {
       "object": "Product_StorageUnit"
     }
+  },
+  "CUSTOMER": {
+    "target": {
+      "object": "CV_Customer"
+    }
   }
 }

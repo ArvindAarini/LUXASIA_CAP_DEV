@@ -3,6 +3,7 @@ using {stores as ss} from '../db/data-model';
 using Brands as _Brands from '../db/data-model';
 using Product_Cost from '../db/data-model';
 using Product_StorageUnit from '../db/data-model';
+using Customer as Customers from '../db/data-model';
 
 // @requires: 'authenticated-user'
 
@@ -35,6 +36,7 @@ service LuxasiaSB @(path: '/luxasia/oDataV4', requires: 'authenticated-user') {
         {
             *
         };
-
+      @readonly
+    entity  Customer as projection on Customers;
 
 }

@@ -242,3 +242,13 @@ entity Product_StorageUnit(IP_WERKS : String(4), IP_LGORT : String(4)) {
         ArticleType  : String(4);
         AvailableQty : Decimal(13, 3);
 }
+@cds.persistence.calcview
+@cds.persistence.exists
+entity Customer {
+    ADDRNUMBER     : String(10);
+    FIRSTNAME     : String(40);
+    LASTNAME      : String(40);
+    E_MAIL      : String(241);
+    TEL1_NUMBR       : String(16);
+    MARKETCONSENT : String(3);
+}

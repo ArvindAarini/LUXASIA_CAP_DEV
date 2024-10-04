@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_Customer" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_Customer.hdbcalculationview"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="KNA1$$$$KNA1$$">
+    <resourceUri>KNA1</resourceUri>
+  </DataSource>
+  <DataSource id="ZSDR_ADRC">
+    <resourceUri>ZSDR_ADRC</resourceUri>
+  </DataSource>
+  <DataSource id="ADR6$$$$ADR6$$">
+    <resourceUri>ADR6</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="KNA1">
+    <viewAttributes>
+      <viewAttribute id="KUNNR"/>
+      <viewAttribute id="TELF1"/>
+      <viewAttribute id="ADRNR"/>
+      <viewAttribute id="KATR8"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="KNA1$$$$KNA1$$"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ADRC">
+    <viewAttributes>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="DATE_FROM"/>
+      <viewAttribute id="NATION"/>
+      <viewAttribute id="DATE_TO"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="NAME1"/>
+      <viewAttribute id="NAME2"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZSDR_ADRC"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ADR6">
+    <viewAttributes>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="SMTP_ADDR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ADR6$$$$ADR6$$"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="KNA1" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="FIRSTNAME"/>
+      <viewAttribute id="LASTNAME"/>
+      <viewAttribute id="E_MAIL"/>
+      <viewAttribute hidden="true" id="JOIN$ADDRNUMBER$ADDRNUMBER"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ADRC">
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIRSTNAME" source="NAME1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LASTNAME" source="NAME2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ADDRNUMBER$ADDRNUMBER" source="ADDRNUMBER"/>
+    </input>
+    <input node="ADR6">
+      <mapping xsi:type="Calculation:AttributeMapping" target="E_MAIL" source="SMTP_ADDR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ADDRNUMBER$ADDRNUMBER" source="ADDRNUMBER"/>
+    </input>
+    <joinAttribute name="JOIN$ADDRNUMBER$ADDRNUMBER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="KNA1" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="FIRSTNAME"/>
+      <viewAttribute id="LASTNAME"/>
+      <viewAttribute id="E_MAIL"/>
+      <viewAttribute id="TEL1_NUMBR"/>
+      <viewAttribute id="MARKET_CONSENT"/>
+      <viewAttribute hidden="true" id="JOIN$ADRNR$ADDRNUMBER"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="KNA1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEL1_NUMBR" source="TELF1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MARKET_CONSENT" source="KATR8"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ADRNR$ADDRNUMBER" source="ADRNR"/>
+    </input>
+    <input node="Join_1_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIRSTNAME" source="FIRSTNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LASTNAME" source="LASTNAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="E_MAIL" source="E_MAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ADRNR$ADDRNUMBER" source="ADDRNUMBER"/>
+    </input>
+    <joinAttribute name="JOIN$ADRNR$ADDRNUMBER"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1_2">
+  <attributes>
+    <attribute id="ADDRNUMBER" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRNUMBER"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="ADDRNUMBER"/>
+    </attribute>
+    <attribute id="FIRSTNAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRSTNAME"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="FIRSTNAME"/>
+    </attribute>
+    <attribute id="LASTNAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LASTNAME"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="LASTNAME"/>
+    </attribute>
+    <attribute id="E_MAIL" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="E_MAIL"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="E_MAIL"/>
+    </attribute>
+    <attribute id="TEL1_NUMBR" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TEL1_NUMBR"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="TEL1_NUMBR"/>
+    </attribute>
+    <attribute id="MARKETCONSENT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MARKET_CONSENT"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="MARKET_CONSENT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    <shape expanded="true" modelObjectName="KNA1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-160" y="324"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="ADRC" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="93" y="317"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="ADR6" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="362" y="317"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="93" y="198"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="KNA1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="125"/>
+    </shape>
+    <shape modelObjectName="ADRC" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="164"/>
+    </shape>
+    <shape modelObjectName="ADR6" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="164"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>
