@@ -242,6 +242,20 @@ entity Product_StorageUnit(IP_WERKS : String(4), IP_LGORT : String(4)) {
         ArticleType  : String(4);
         AvailableQty : Decimal(13, 3);
 }
+
+@cds.persistence.calcview
+@cds.persistence.exists
+entity Purchase_Order(IP_WERKS : String(4),IP_SUPP_WERKS : String(4), IP_SUPP_VEND : String(20), IP_BRAND_ID : String(18)) {
+key ARTICLENO    : String(18);
+key STLOC        : String(4);
+    ARTICLEDESC  : String(40);
+    STOREID      : String(4);
+    UOM          : String(3);
+    BRAND_ID     : String(4);
+    BARCODE      : String(18);
+    ARTICLETYPE  : String(4);
+    AVAILABLEQTY : Decimal(13, 3);
+}
 @cds.persistence.calcview
 @cds.persistence.exists
 entity Customer {

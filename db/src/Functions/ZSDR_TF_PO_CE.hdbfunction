@@ -1,0 +1,58 @@
+FUNCTION "ZSDR_TF_PO_CE"(
+    IP_WERKS NVARCHAR(4),
+    IP_SUPP_WERKS NVARCHAR(4),
+    IP_SUPP_VEND NVARCHAR(20)
+)
+RETURNS TABLE (
+    ARTICLENO NVARCHAR(18),
+    STLOC NVARCHAR(4),
+    ARTICLEDESC NVARCHAR(40),
+    STOREID NVARCHAR(4),
+    UOM NVARCHAR(3),
+    BRAND_ID NVARCHAR(4),
+    BARCODE NVARCHAR(18),
+    ARTICLETYPE NVARCHAR(4),
+    AVAILABLEQTY DECIMAL(13,3)
+)
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+AS
+BEGIN
+    DECLARE var_out TABLE (
+        ARTICLENO NVARCHAR(18),
+        STLOC NVARCHAR(4),
+        ARTICLEDESC NVARCHAR(40),
+        STOREID NVARCHAR(4),
+        UOM NVARCHAR(3),
+        BRAND_ID NVARCHAR(4),
+        BARCODE NVARCHAR(18),
+        ARTICLETYPE NVARCHAR(4),
+        AVAILABLEQTY DECIMAL(13,3)
+    );
+    
+    DECLARE VEND_WERKS NVARCHAR(4);
+
+    IF IP_SUPP_WERKS!='' THEN
+        var_out = SELECT * FROM ZSDR_CDS_P_PO_CE (
+            placeholder."$$IP_WERKS$$" => :IP_WERKS, 
+            placeholder."$$IP_VTWEG$$" => '10', 
+            placeholder."$$IP_LGORT$$" => '0001',
+            placeholder."$$IP_SUPP_WERKS$$" => :IP_SUPP_WERKS
+        );
+    ELSE 
+         (SELECT TOP 1 T.WERKS INTO VEND_WERKS
+                      FROM WYT3 W 
+                      INNER JOIN T001W T ON W.LIFNR = T.LIFNR
+                      WHERE W.lifn2 = :IP_SUPP_VEND 
+                        AND W.parvw = 'SC' 
+                        AND W.ekorg = '0001');
+            var_out = SELECT * FROM ZSDR_CDS_P_PO_CE (
+                placeholder."$$IP_WERKS$$" => :IP_WERKS, 
+                placeholder."$$IP_VTWEG$$" => '10', 
+                placeholder."$$IP_LGORT$$" => '0001',
+                placeholder."$$IP_SUPP_WERKS$$" => :VEND_WERKS
+            );
+    END IF;
+
+    RETURN :var_out;
+END;

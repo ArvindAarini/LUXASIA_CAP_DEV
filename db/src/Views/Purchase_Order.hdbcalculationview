@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" id="Purchase_Order" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="Purchase_Order.hdbcalculationview"/>
+<localVariables>
+  <variable id="IP_WERKS" parameter="true">
+    <descriptions defaultDescription=" "/>
+    <variableProperties datatype="NVARCHAR" length="4">
+      <valueDomain type="empty"/>
+      <selection/>
+    </variableProperties>
+  </variable>
+  <variable id="IP_SUPP_WERKS" parameter="true">
+    <descriptions defaultDescription=" "/>
+    <variableProperties datatype="NVARCHAR" length="4">
+      <valueDomain type="empty"/>
+      <selection/>
+    </variableProperties>
+  </variable>
+  <variable id="IP_SUPP_VEND" parameter="true">
+    <descriptions defaultDescription=" "/>
+    <variableProperties datatype="NVARCHAR" length="10">
+      <valueDomain type="empty"/>
+      <selection/>
+    </variableProperties>
+  </variable>
+  <variable id="IP_BRAND_ID" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="NVARCHAR" length="18" mandatory="false">
+      <valueDomain type="empty"/>
+      <selection multiLine="true" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="ZSDR_TF_PO_CE">
+    <targetVariable name="IP_SUPP_WERKS" resourceUri="ZSDR_TF_PO_CE"/>
+    <localVariable>IP_SUPP_WERKS</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="ZSDR_TF_PO_CE">
+    <targetVariable name="IP_SUPP_VEND" resourceUri="ZSDR_TF_PO_CE"/>
+    <localVariable>IP_SUPP_VEND</localVariable>
+  </mapping>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="ZSDR_TF_PO_CE">
+    <targetVariable name="IP_WERKS" resourceUri="ZSDR_TF_PO_CE"/>
+    <localVariable>IP_WERKS</localVariable>
+  </mapping>
+</variableMappings>
+<dataSources>
+  <DataSource id="ZSDR_TF_PO_CE" type="TABLE_FUNCTION">
+    <resourceUri>ZSDR_TF_PO_CE</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="STOREID"/>
+      <viewAttribute id="ARTICLETYPE"/>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="ARTICLEDESC"/>
+      <viewAttribute id="AVAILABLEQTY"/>
+      <viewAttribute id="BARCODE"/>
+      <viewAttribute id="UOM"/>
+      <viewAttribute id="STLOC"/>
+      <viewAttribute id="ARTICLENO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ZSDR_TF_PO_CE"/>
+    <filter>&quot;BRAND_ID&quot; in ($$IP_BRAND_ID$$)</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="STOREID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STOREID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="STOREID"/>
+    </attribute>
+    <attribute id="ARTICLETYPE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ARTICLETYPE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ARTICLETYPE"/>
+    </attribute>
+    <attribute id="BRAND_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRAND_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BRAND_ID"/>
+    </attribute>
+    <attribute id="ARTICLEDESC" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ARTICLEDESC"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ARTICLEDESC"/>
+    </attribute>
+    <attribute id="BARCODE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BARCODE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BARCODE"/>
+    </attribute>
+    <attribute id="UOM" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UOM"/>
+      <keyMapping columnObjectName="Projection_1" columnName="UOM"/>
+    </attribute>
+    <attribute id="STLOC" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STLOC"/>
+      <keyMapping columnObjectName="Projection_1" columnName="STLOC"/>
+    </attribute>
+    <attribute id="ARTICLENO" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ARTICLENO"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ARTICLENO"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="AVAILABLEQTY" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AVAILABLEQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="AVAILABLEQTY"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="191"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -4,6 +4,7 @@ using Brands as _Brands from '../db/data-model';
 using Product_Cost from '../db/data-model';
 using Product_StorageUnit from '../db/data-model';
 using Customer as Customers from '../db/data-model';
+using Purchase_Order from '../db/data-model';
 
 // @requires: 'authenticated-user'
 
@@ -36,6 +37,13 @@ service LuxasiaSB @(path: '/luxasia/oDataV4', requires: 'authenticated-user') {
         {
             *
         };
+    @readonly
+    entity PurchaseOrder(IP_WERKS: String(4),IP_SUPP_WERKS : String(4), IP_SUPP_VEND : String(20), IP_BRAND_ID : String(18)) as
+    select from Purchase_Order (IP_WERKS: :IP_WERKS ,IP_SUPP_WERKS: :IP_SUPP_WERKS , IP_SUPP_VEND::IP_SUPP_VEND,IP_BRAND_ID: :IP_BRAND_ID )
+        {
+            *
+        };
+    
       @readonly
     entity  Customer as projection on Customers;
 
