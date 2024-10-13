@@ -96,7 +96,7 @@
 </calculationViews>
 <logicalModel id="Join_1_2">
   <attributes>
-    <attribute id="ADDRNUMBER" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CUSTOMERNO" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ADDRNUMBER"/>
       <keyMapping columnObjectName="Join_1_2" columnName="ADDRNUMBER"/>
     </attribute>
@@ -108,11 +108,11 @@
       <descriptions defaultDescription="LASTNAME"/>
       <keyMapping columnObjectName="Join_1_2" columnName="LASTNAME"/>
     </attribute>
-    <attribute id="E_MAIL" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="EMAIL" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="E_MAIL"/>
       <keyMapping columnObjectName="Join_1_2" columnName="E_MAIL"/>
     </attribute>
-    <attribute id="TEL1_NUMBR" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="TEL1NUMBER" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="TEL1_NUMBR"/>
       <keyMapping columnObjectName="Join_1_2" columnName="TEL1_NUMBR"/>
     </attribute>

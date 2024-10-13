@@ -77,6 +77,7 @@ resources:
     type: org.cloudfoundry.existing-service
     parameters:
       service-name: UPS_Luxasia
+      
   - name: Luxasia_CAP_DEV-Auth-auth
     type: org.cloudfoundry.managed-service
     parameters:
