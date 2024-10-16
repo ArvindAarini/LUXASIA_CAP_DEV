@@ -51,5 +51,15 @@
 ]
 }
 
-   
-  
+###
+POST http://localhost:34329/luxasia/oDataV4/insert
+Content-Type: application/json
+
+{
+  "kunnr":"CD",
+  "addrnumber" : "123ADR", 
+  "name1": "Ashwin", 
+  "name2":"Shrimanwar",
+  "tel_number":"7766554499", 
+  "smtp_addr" :"Ash@email.com"
+}

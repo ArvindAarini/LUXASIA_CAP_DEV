@@ -4,9 +4,11 @@
   "src/gen/**/*.hdbconstraint",
   "src/Views/**/*.hdbcalculationview",
   "src/**/*.hdbprocedure",
-  "src/JOBS/**/*.hdbschedulerjob",
+  "src/JOBS/*.hdbschedulerjob",
   "src/**/*.hdbvirtualtable",
   "src/**/**/*.hdbvirtualtable",
+  "src/**/*.hdbtable",
+  "src/**/**/*.hdbtable",
   "src/**/**/*.hdbflowgraph",
   "src/**/**/*.hdbreptask",
   "src/**/**/*.hdbtable"
