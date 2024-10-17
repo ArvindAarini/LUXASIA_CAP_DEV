@@ -4,20 +4,23 @@ const cds = require("@sap/cds");
 module.exports = cds.service.impl(srv => {
     srv.on('insert', async (req) => {
         const { kunnr, addrnumber, name1, name2, tel_number, smtp_addr } = req.data;
+                // Add left padding to kunnr and addrnumber
+           var kunnr_pad = kunnr.padStart(10, '0'); // Adjust the length and added zero's for matching the data
+           var addrnumber_pad = addrnumber.padStart(10, '0'); // Adjust the length and added zero's for matching the data
         console.log("kunnr " + kunnr)
 
         try {
             // Insert data into the KNA1 table
             const res1 = await cds.run(
                 INSERT.into('KNA1').entries({
-                    KUNNR: kunnr,
-                    ADRNR: addrnumber
+                    KUNNR: kunnr_pad,
+                    ADRNR: addrnumber_pad
                 }));
             console.log("res1 " + res1)
             const res2 = await cds.run(
                 INSERT.into('ZSDR_ADRC').entries({
                     CLIENT: '',
-                    ADDRNUMBER: addrnumber,
+                    ADDRNUMBER: addrnumber_pad,
                     DATE_FROM: '',
                     NATION: '',
                     NAME1: name1,
@@ -28,7 +31,7 @@ module.exports = cds.service.impl(srv => {
             const res3 = await cds.run(
                 INSERT.into('ADR6').entries({
                     CLIENT: '',
-                    ADDRNUMBER: addrnumber,
+                    ADDRNUMBER: addrnumber_pad,
                     PERSNUMBER: '',
                     DATE_FROM: '',
                     CONSNUMBER: '',

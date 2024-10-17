@@ -35,6 +35,8 @@
       <viewAttribute id="TITLE"/>
       <viewAttribute id="NAME1"/>
       <viewAttribute id="NAME2"/>
+    
+      <viewAttribute id="TEL_NUMBER"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="ZSDR_ADRC"/>
@@ -49,16 +51,18 @@
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" joinType="leftOuter" multiJoinNode="Join_1" multiJoinCentralTable="KNA1" multiJoinOrder="Outside In">
     <viewAttributes>
-      <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute id="FIRSTNAME"/>
       <viewAttribute id="LASTNAME"/>
       <viewAttribute id="E_MAIL"/>
+      <viewAttribute id="TEL1_NUMBR"/>
+      <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute hidden="true" id="JOIN$ADDRNUMBER$ADDRNUMBER"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="ADRC">
       <mapping xsi:type="Calculation:AttributeMapping" target="FIRSTNAME" source="NAME1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LASTNAME" source="NAME2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEL1_NUMBR" source="TEL_NUMBER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ADDRNUMBER$ADDRNUMBER" source="ADDRNUMBER"/>
     </input>
@@ -80,15 +84,15 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="KNA1">
-      <mapping xsi:type="Calculation:AttributeMapping" target="TEL1_NUMBR" source="TELF1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MARKET_CONSENT" source="KATR8"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="KUNNR"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ADRNR$ADDRNUMBER" source="ADRNR"/>
     </input>
     <input node="Join_1_1">
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="FIRSTNAME" source="FIRSTNAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LASTNAME" source="LASTNAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="E_MAIL" source="E_MAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEL1_NUMBR" source="TEL1_NUMBR"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ADRNR$ADDRNUMBER" source="ADDRNUMBER"/>
     </input>
     <joinAttribute name="JOIN$ADRNR$ADDRNUMBER"/>

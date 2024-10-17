@@ -52,7 +52,7 @@
 }
 
 ###
-POST http://localhost:34329/luxasia/oDataV4/insert
+POST http://localhost:42689/luxasia/oDataV4/insert
 Content-Type: application/json
 
 {
