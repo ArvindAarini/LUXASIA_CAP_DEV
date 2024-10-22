@@ -4,6 +4,7 @@ using Brands as _Brands from '../db/data-model';
 using Product_Cost from '../db/data-model';
 using Product_StorageUnit from '../db/data-model';
 using Customer as Customers from '../db/data-model';
+using Customer_V1 as Customers_V1 from '../db/data-model';
 using Purchase_Order from '../db/data-model';
 
 // @requires: 'authenticated-user'
@@ -56,10 +57,12 @@ service LuxasiaSB @(
         };
 
     @readonly
-    entity Customer                                                                                                            as projection on Customers;
+    entity Customer as projection on Customers;
+    entity Customer_V1 as projection on Customers_V1;
 
     action insert(kunnr : String,
                   addrnumber : String,
+                  marketcon:String,
                   client : String,
                   date_from : String,
                   nation : String,

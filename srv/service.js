@@ -3,7 +3,7 @@ const cds = require("@sap/cds");
 
 module.exports = cds.service.impl(srv => {
     srv.on('insert', async (req) => {
-        const { kunnr, addrnumber, name1, name2, tel_number, smtp_addr } = req.data;
+        const { kunnr, addrnumber, name1, name2, tel_number, smtp_addr,marketcon } = req.data;
                 // Add left padding to kunnr and addrnumber
            var kunnr_pad = kunnr.padStart(10, '0'); // Adjust the length and added zero's for matching the data
            var addrnumber_pad = addrnumber.padStart(10, '0'); // Adjust the length and added zero's for matching the data
@@ -14,7 +14,8 @@ module.exports = cds.service.impl(srv => {
             const res1 = await cds.run(
                 INSERT.into('KNA1').entries({
                     KUNNR: kunnr_pad,
-                    ADRNR: addrnumber_pad
+                    ADRNR: addrnumber_pad,
+                    KATR8: marketcon 
                 }));
             console.log("res1 " + res1)
             const res2 = await cds.run(
