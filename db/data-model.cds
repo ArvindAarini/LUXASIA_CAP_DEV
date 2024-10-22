@@ -313,3 +313,17 @@ entity Customer {
     TEL1NUMBER    : String(16);
     MARKETCONSENT : String(3);
 }
+
+@cds.persistence.calcview
+@cds.persistence.exists
+entity Customer_V1 {
+	CUSTOMERNO: String(10);
+	FIRSTNAME: String(35);
+	LASTNAME: String(35);
+	E_MAIL: String(241);
+	DOB: String(8);
+	TEL1NUMBER: String(30);
+	POSTLCOD1: String(10);
+	CITY: String(40);
+	STREET: String(60);
+}

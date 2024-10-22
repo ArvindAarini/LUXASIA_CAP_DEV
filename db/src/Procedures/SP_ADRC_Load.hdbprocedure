@@ -13,7 +13,10 @@ BEGIN
         "TITLE",
         "NAME1",
         "NAME2",
-        "TEL_NUMBER"
+        "TEL_NUMBER",
+        "CITY1",
+        "POST_CODE1",
+        "STREET"
       FROM "VT_ZSDR_ADRC_DBV"
       WHERE "ADDRNUMBER" > '0000000001'
         AND "ADDRNUMBER" <= '0004000001'
@@ -27,7 +30,10 @@ BEGIN
         "TITLE",
         "NAME1",
         "NAME2",
-        "TEL_NUMBER"
+        "TEL_NUMBER",
+        "CITY1",
+        "POST_CODE1",
+        "STREET"
       FROM "VT_ZSDR_ADRC_DBV"
       WHERE "ADDRNUMBER" > '0004000001'
         AND "ADDRNUMBER" <= '0008000001'
@@ -41,7 +47,10 @@ BEGIN
         "TITLE",
         "NAME1",
         "NAME2",
-        "TEL_NUMBER"
+        "TEL_NUMBER",
+        "CITY1",
+        "POST_CODE1",
+        "STREET"
       FROM "VT_ZSDR_ADRC_DBV"
       WHERE "ADDRNUMBER" > '0008000001'
         AND "ADDRNUMBER" <= '0012000001'
@@ -55,7 +64,10 @@ BEGIN
         "TITLE",
         "NAME1",
         "NAME2",
-        "TEL_NUMBER"
+        "TEL_NUMBER",
+        "CITY1",
+        "POST_CODE1",
+        "STREET"
       FROM "VT_ZSDR_ADRC_DBV"
       WHERE "ADDRNUMBER" > '0012000001'
         AND "ADDRNUMBER" <= '0016000001'
@@ -69,7 +81,10 @@ BEGIN
         "TITLE",
         "NAME1",
         "NAME2",
-        "TEL_NUMBER"
+        "TEL_NUMBER",
+        "CITY1",
+        "POST_CODE1",
+        "STREET"
       FROM "VT_ZSDR_ADRC_DBV"
       WHERE "ADDRNUMBER" > '0016000001'
         AND "ADDRNUMBER" <= '0020000001'
@@ -83,7 +98,10 @@ BEGIN
         "TITLE",
         "NAME1",
         "NAME2",
-        "TEL_NUMBER"
+        "TEL_NUMBER",
+        "CITY1",
+        "POST_CODE1",
+        "STREET"
       FROM "VT_ZSDR_ADRC_DBV"
       WHERE "ADDRNUMBER" > '0020000001'
         AND "ADDRNUMBER" <= '9000000001'
@@ -97,7 +115,10 @@ BEGIN
         "TITLE",
         "NAME1",
         "NAME2",
-        "TEL_NUMBER"
+        "TEL_NUMBER",
+        "CITY1",
+        "POST_CODE1",
+        "STREET"
       FROM "VT_ZSDR_ADRC_DBV"
       WHERE "ADDRNUMBER" > '9000000001'
         AND "ADDRNUMBER" <= '9002400001'
@@ -111,7 +132,10 @@ BEGIN
         "TITLE",
         "NAME1",
         "NAME2",
-        "TEL_NUMBER"
+        "TEL_NUMBER",
+        "CITY1",
+        "POST_CODE1",
+        "STREET"
       FROM "VT_ZSDR_ADRC_DBV"
       WHERE "ADDRNUMBER" > '9002400001'
         AND "ADDRNUMBER" <= '9004800001'
@@ -125,7 +149,10 @@ BEGIN
         "TITLE",
         "NAME1",
         "NAME2",
-        "TEL_NUMBER"
+        "TEL_NUMBER",
+        "CITY1",
+        "POST_CODE1",
+        "STREET"
       FROM "VT_ZSDR_ADRC_DBV"
       WHERE "ADDRNUMBER" > '9004800001'
         AND "ADDRNUMBER" <= '9006400001'
@@ -139,14 +166,18 @@ BEGIN
         "TITLE",
         "NAME1",
         "NAME2",
-        "TEL_NUMBER"
+        "TEL_NUMBER",
+        "CITY1",
+        "POST_CODE1",
+        "STREET"
       FROM "VT_ZSDR_ADRC_DBV"
       WHERE "ADDRNUMBER" > '9006400001'
         AND "ADDRNUMBER" <= '9009000001'
     );
   TRUNCATE TABLE "ZSDR_ADRC";
   INSERT INTO "ZSDR_ADRC" (
-      SELECT * FROM "ADRC_LOAD"
+      SELECT *
+      FROM "ADRC_LOAD"
     );
   TRUNCATE TABLE "ADRC_LOAD";
 END

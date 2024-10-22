@@ -59,6 +59,11 @@
       "object": "CV_Customer"
     }
   },
+  "CUSTOMERV1": {
+    "target": {
+      "object": "CV_Customer_V1"
+    }
+  },
   "PURCHASE_ORDER": {
     "target": {
       "object": "Purchase_Order"
