@@ -58,18 +58,16 @@ service LuxasiaSB @(
     @readonly
     entity Customer                                                                                                            as projection on Customers;
 
-    action insert(
-            kunnr : String, 
-            addrnumber : String, 
-            client: String,
-            date_from: String,
-            nation: String,
-            name1 : String, 
-            name2 : String, 
-            tel_number : String,
-            persnumber: String,
-            consumer:String,
-            smtp_addr:String
-            ) returns Integer;
+    action insert(kunnr : String,
+                  addrnumber : String,
+                  client : String,
+                  date_from : String,
+                  nation : String,
+                  name1 : String,
+                  name2 : String,
+                  tel_number : String,
+                  persnumber : String,
+                  consumer : String,
+                  smtp_addr : String) returns Integer;
 
 }

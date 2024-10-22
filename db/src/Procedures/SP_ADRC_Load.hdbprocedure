@@ -1,0 +1,152 @@
+PROCEDURE "SP_ADRC_Load"() 
+  LANGUAGE SQLSCRIPT 
+  SQL SECURITY INVOKER 
+  --DEFAULT SCHEMA <default_schema_name>
+  AS 
+BEGIN
+  INSERT INTO "ADRC_LOAD" (
+      SELECT "CLIENT",
+        "ADDRNUMBER",
+        "DATE_FROM",
+        "NATION",
+        "DATE_TO",
+        "TITLE",
+        "NAME1",
+        "NAME2",
+        "TEL_NUMBER"
+      FROM "VT_ZSDR_ADRC_DBV"
+      WHERE "ADDRNUMBER" > '0000000001'
+        AND "ADDRNUMBER" <= '0004000001'
+    );
+  INSERT INTO "ADRC_LOAD" (
+      SELECT "CLIENT",
+        "ADDRNUMBER",
+        "DATE_FROM",
+        "NATION",
+        "DATE_TO",
+        "TITLE",
+        "NAME1",
+        "NAME2",
+        "TEL_NUMBER"
+      FROM "VT_ZSDR_ADRC_DBV"
+      WHERE "ADDRNUMBER" > '0004000001'
+        AND "ADDRNUMBER" <= '0008000001'
+    );
+  INSERT INTO "ADRC_LOAD" (
+      SELECT "CLIENT",
+        "ADDRNUMBER",
+        "DATE_FROM",
+        "NATION",
+        "DATE_TO",
+        "TITLE",
+        "NAME1",
+        "NAME2",
+        "TEL_NUMBER"
+      FROM "VT_ZSDR_ADRC_DBV"
+      WHERE "ADDRNUMBER" > '0008000001'
+        AND "ADDRNUMBER" <= '0012000001'
+    );
+  INSERT INTO "ADRC_LOAD" (
+      SELECT "CLIENT",
+        "ADDRNUMBER",
+        "DATE_FROM",
+        "NATION",
+        "DATE_TO",
+        "TITLE",
+        "NAME1",
+        "NAME2",
+        "TEL_NUMBER"
+      FROM "VT_ZSDR_ADRC_DBV"
+      WHERE "ADDRNUMBER" > '0012000001'
+        AND "ADDRNUMBER" <= '0016000001'
+    );
+  INSERT INTO "ADRC_LOAD" (
+      SELECT "CLIENT",
+        "ADDRNUMBER",
+        "DATE_FROM",
+        "NATION",
+        "DATE_TO",
+        "TITLE",
+        "NAME1",
+        "NAME2",
+        "TEL_NUMBER"
+      FROM "VT_ZSDR_ADRC_DBV"
+      WHERE "ADDRNUMBER" > '0016000001'
+        AND "ADDRNUMBER" <= '0020000001'
+    );
+  INSERT INTO "ADRC_LOAD" (
+      SELECT "CLIENT",
+        "ADDRNUMBER",
+        "DATE_FROM",
+        "NATION",
+        "DATE_TO",
+        "TITLE",
+        "NAME1",
+        "NAME2",
+        "TEL_NUMBER"
+      FROM "VT_ZSDR_ADRC_DBV"
+      WHERE "ADDRNUMBER" > '0020000001'
+        AND "ADDRNUMBER" <= '9000000001'
+    );
+  INSERT INTO "ADRC_LOAD" (
+      SELECT "CLIENT",
+        "ADDRNUMBER",
+        "DATE_FROM",
+        "NATION",
+        "DATE_TO",
+        "TITLE",
+        "NAME1",
+        "NAME2",
+        "TEL_NUMBER"
+      FROM "VT_ZSDR_ADRC_DBV"
+      WHERE "ADDRNUMBER" > '9000000001'
+        AND "ADDRNUMBER" <= '9002400001'
+    );
+  INSERT INTO "ADRC_LOAD" (
+      SELECT "CLIENT",
+        "ADDRNUMBER",
+        "DATE_FROM",
+        "NATION",
+        "DATE_TO",
+        "TITLE",
+        "NAME1",
+        "NAME2",
+        "TEL_NUMBER"
+      FROM "VT_ZSDR_ADRC_DBV"
+      WHERE "ADDRNUMBER" > '9002400001'
+        AND "ADDRNUMBER" <= '9004800001'
+    );
+  INSERT INTO "ADRC_LOAD" (
+      SELECT "CLIENT",
+        "ADDRNUMBER",
+        "DATE_FROM",
+        "NATION",
+        "DATE_TO",
+        "TITLE",
+        "NAME1",
+        "NAME2",
+        "TEL_NUMBER"
+      FROM "VT_ZSDR_ADRC_DBV"
+      WHERE "ADDRNUMBER" > '9004800001'
+        AND "ADDRNUMBER" <= '9006400001'
+    );
+  INSERT INTO "ADRC_LOAD" (
+      SELECT "CLIENT",
+        "ADDRNUMBER",
+        "DATE_FROM",
+        "NATION",
+        "DATE_TO",
+        "TITLE",
+        "NAME1",
+        "NAME2",
+        "TEL_NUMBER"
+      FROM "VT_ZSDR_ADRC_DBV"
+      WHERE "ADDRNUMBER" > '9006400001'
+        AND "ADDRNUMBER" <= '9009000001'
+    );
+  TRUNCATE TABLE "ZSDR_ADRC";
+  INSERT INTO "ZSDR_ADRC" (
+      SELECT * FROM "ADRC_LOAD"
+    );
+  TRUNCATE TABLE "ADRC_LOAD";
+END

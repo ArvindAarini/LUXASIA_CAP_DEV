@@ -11,5 +11,8 @@
   "src/**/**/*.hdbtable",
   "src/**/**/*.hdbflowgraph",
   "src/**/**/*.hdbreptask",
-  "src/**/**/*.hdbtable"
+  "src/**/**/*.hdbtable",
+  "src/**/*.hdbtable",
+  "src/*.hdbtable",
+  "db/**/**/*.hdbtable"
 ]

@@ -26,7 +26,7 @@
     <calculatedViewAttributes/>
     <input node="KNA1$$$$KNA1$$"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="ADRC">
+  <calculationView xsi:type="Calculation:ProjectionView" id="ADRC1">
     <viewAttributes>
       <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute id="DATE_FROM"/>
@@ -59,7 +59,7 @@
       <viewAttribute hidden="true" id="JOIN$ADDRNUMBER$ADDRNUMBER"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="ADRC">
+    <input node="ADRC1">
       <mapping xsi:type="Calculation:AttributeMapping" target="FIRSTNAME" source="NAME1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LASTNAME" source="NAME2"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="TEL1_NUMBR" source="TEL_NUMBER"/>
@@ -139,7 +139,7 @@
       <upperLeftCorner x="-160" y="324"/>
       <rectangleSize height="30" width="160"/>
     </shape>
-    <shape expanded="true" modelObjectName="ADRC" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectName="ADRC1" modelObjectNameSpace="CalculationView">
       <upperLeftCorner x="93" y="317"/>
       <rectangleSize height="30" width="160"/>
     </shape>
@@ -157,7 +157,7 @@
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="125"/>
     </shape>
-    <shape modelObjectName="ADRC" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+    <shape modelObjectName="ADRC1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="164"/>
     </shape>

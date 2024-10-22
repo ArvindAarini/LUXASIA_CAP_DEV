@@ -1,0 +1,223 @@
+PROCEDURE "SP_ADR6_Load"() 
+  LANGUAGE SQLSCRIPT 
+  SQL SECURITY INVOKER 
+  --DEFAULT SCHEMA <default_schema_name>
+  AS 
+BEGIN
+  INSERT INTO "ADR6_LOAD" (
+      SELECT 
+      "CLIENT",
+      "ADDRNUMBER",
+      "PERSNUMBER",
+      "DATE_FROM",
+      "CONSNUMBER",
+      "FLGDEFAULT",
+      "FLG_NOUSE",
+      "HOME_FLAG",
+      "SMTP_ADDR",
+      "SMTP_SRCH",
+      "DFT_RECEIV",
+      "R3_USER",
+      "ENCODE",
+      "TNEF",
+      "VALID_FROM",
+      "VALID_TO"
+      FROM "VT_ADR6"
+      WHERE "ADDRNUMBER" > '0000000001'
+        AND "ADDRNUMBER" <= '0004000001'
+    );
+  INSERT INTO "ADR6_LOAD" (
+      SELECT"CLIENT",
+      "ADDRNUMBER",
+      "PERSNUMBER",
+      "DATE_FROM",
+      "CONSNUMBER",
+      "FLGDEFAULT",
+      "FLG_NOUSE",
+      "HOME_FLAG",
+      "SMTP_ADDR",
+      "SMTP_SRCH",
+      "DFT_RECEIV",
+      "R3_USER",
+      "ENCODE",
+      "TNEF",
+      "VALID_FROM",
+      "VALID_TO"
+      FROM "VT_ADR6"
+      WHERE "ADDRNUMBER" > '0004000001'
+        AND "ADDRNUMBER" <= '0008000001'
+    );
+  INSERT INTO "ADR6_LOAD" (
+      SELECT"CLIENT",
+      "ADDRNUMBER",
+      "PERSNUMBER",
+      "DATE_FROM",
+      "CONSNUMBER",
+      "FLGDEFAULT",
+      "FLG_NOUSE",
+      "HOME_FLAG",
+      "SMTP_ADDR",
+      "SMTP_SRCH",
+      "DFT_RECEIV",
+      "R3_USER",
+      "ENCODE",
+      "TNEF",
+      "VALID_FROM",
+      "VALID_TO"
+      FROM "VT_ADR6"
+      WHERE "ADDRNUMBER" > '0008000001'
+        AND "ADDRNUMBER" <= '0012000001'
+    );
+  INSERT INTO "ADR6_LOAD" (
+      SELECT"CLIENT",
+      "ADDRNUMBER",
+      "PERSNUMBER",
+      "DATE_FROM",
+      "CONSNUMBER",
+      "FLGDEFAULT",
+      "FLG_NOUSE",
+      "HOME_FLAG",
+      "SMTP_ADDR",
+      "SMTP_SRCH",
+      "DFT_RECEIV",
+      "R3_USER",
+      "ENCODE",
+      "TNEF",
+      "VALID_FROM",
+      "VALID_TO"
+      FROM "VT_ADR6"
+      WHERE "ADDRNUMBER" > '0012000001'
+        AND "ADDRNUMBER" <= '0016000001'
+    );
+  INSERT INTO "ADR6_LOAD" (
+      SELECT"CLIENT",
+      "ADDRNUMBER",
+      "PERSNUMBER",
+      "DATE_FROM",
+      "CONSNUMBER",
+      "FLGDEFAULT",
+      "FLG_NOUSE",
+      "HOME_FLAG",
+      "SMTP_ADDR",
+      "SMTP_SRCH",
+      "DFT_RECEIV",
+      "R3_USER",
+      "ENCODE",
+      "TNEF",
+      "VALID_FROM",
+      "VALID_TO"
+      FROM "VT_ADR6"
+      WHERE "ADDRNUMBER" > '0016000001'
+        AND "ADDRNUMBER" <= '0020000001'
+    );
+  INSERT INTO "ADR6_LOAD" (
+      SELECT"CLIENT",
+      "ADDRNUMBER",
+      "PERSNUMBER",
+      "DATE_FROM",
+      "CONSNUMBER",
+      "FLGDEFAULT",
+      "FLG_NOUSE",
+      "HOME_FLAG",
+      "SMTP_ADDR",
+      "SMTP_SRCH",
+      "DFT_RECEIV",
+      "R3_USER",
+      "ENCODE",
+      "TNEF",
+      "VALID_FROM",
+      "VALID_TO"
+      FROM "VT_ADR6"
+      WHERE "ADDRNUMBER" > '0020000001'
+        AND "ADDRNUMBER" <= '9000000001'
+    );
+  INSERT INTO "ADR6_LOAD" (
+      SELECT"CLIENT",
+      "ADDRNUMBER",
+      "PERSNUMBER",
+      "DATE_FROM",
+      "CONSNUMBER",
+      "FLGDEFAULT",
+      "FLG_NOUSE",
+      "HOME_FLAG",
+      "SMTP_ADDR",
+      "SMTP_SRCH",
+      "DFT_RECEIV",
+      "R3_USER",
+      "ENCODE",
+      "TNEF",
+      "VALID_FROM",
+      "VALID_TO"
+      FROM "VT_ADR6"
+      WHERE "ADDRNUMBER" > '9000000001'
+        AND "ADDRNUMBER" <= '9002400001'
+    );
+  INSERT INTO "ADR6_LOAD" (
+      SELECT"CLIENT",
+      "ADDRNUMBER",
+      "PERSNUMBER",
+      "DATE_FROM",
+      "CONSNUMBER",
+      "FLGDEFAULT",
+      "FLG_NOUSE",
+      "HOME_FLAG",
+      "SMTP_ADDR",
+      "SMTP_SRCH",
+      "DFT_RECEIV",
+      "R3_USER",
+      "ENCODE",
+      "TNEF",
+      "VALID_FROM",
+      "VALID_TO"
+      FROM "VT_ADR6"
+      WHERE "ADDRNUMBER" > '9002400001'
+        AND "ADDRNUMBER" <= '9004800001'
+    );
+  INSERT INTO "ADR6_LOAD" (
+      SELECT"CLIENT",
+      "ADDRNUMBER",
+      "PERSNUMBER",
+      "DATE_FROM",
+      "CONSNUMBER",
+      "FLGDEFAULT",
+      "FLG_NOUSE",
+      "HOME_FLAG",
+      "SMTP_ADDR",
+      "SMTP_SRCH",
+      "DFT_RECEIV",
+      "R3_USER",
+      "ENCODE",
+      "TNEF",
+      "VALID_FROM",
+      "VALID_TO"
+      FROM "VT_ADR6"
+      WHERE "ADDRNUMBER" > '9004800001'
+        AND "ADDRNUMBER" <= '9006400001'
+    );
+  INSERT INTO "ADR6_LOAD" (
+      SELECT"CLIENT",
+      "ADDRNUMBER",
+      "PERSNUMBER",
+      "DATE_FROM",
+      "CONSNUMBER",
+      "FLGDEFAULT",
+      "FLG_NOUSE",
+      "HOME_FLAG",
+      "SMTP_ADDR",
+      "SMTP_SRCH",
+      "DFT_RECEIV",
+      "R3_USER",
+      "ENCODE",
+      "TNEF",
+      "VALID_FROM",
+      "VALID_TO"
+      FROM "VT_ADR6"
+      WHERE "ADDRNUMBER" > '9006400001'
+        AND "ADDRNUMBER" <= '9009000001'
+    );
+  TRUNCATE TABLE "ADR6";
+  INSERT INTO "ADR6" (
+      SELECT * FROM "ADR6_LOAD"
+    );
+  TRUNCATE TABLE "ADR6_LOAD";
+END
