@@ -36,79 +36,6 @@ context stores {
             MAKTX : String(40);
             MAKTG : String(40)
     }
-
-    // @cds.persistence.exists
-    // entity MVKE {
-    //     key MANDT : String(3) NOT null;
-    //     key MATNR : String(18) NOT null;
-    //     key VKORG : String(4) NOT null;
-    //     key VTWEG : String(2) NOT null;
-    //         LVORM : String(1);
-    //         VERSG : String(1);
-    //         BONUS : String(2);
-    //         PROVG : String(2);
-    //         SKTOF : String(1);
-    //         VMSTA : String(2);
-    //         VMSTD : String(8);
-    //         AUMNG : Decimal(13, 3);
-    //         LFMNG : Decimal(13, 3);
-    //         EFMNG : Decimal(13, 3);
-    //         SCMNG : Decimal(13, 3);
-    //         SCHME : String(3);
-    //         VRKME : String(3);
-    //         MTPOS : String(4);
-    //         DWERK : String(4);
-    //         PRODH : String(18);
-    //         PMATN : String(18);
-    //         KONDM : String(2);
-    //         KTGRM : String(2);
-    //         MVGR1 : String(3);
-    //         MVGR2 : String(3);
-    //         MVGR3 : String(3);
-    //         MVGR4 : String(3);
-    //         MVGR5 : String(3);
-    //         SSTUF : String(2);
-    //         PFLKS : String(1);
-    //         LSTFL : String(2);
-    //         LSTVZ : String(2);
-    //         LSTAK : String(1);
-    //         LDVFL : String(8);
-    //         LDBFL : String(8);
-    //         LDVZL : String(8);
-    //         LDBZL : String(8);
-    //         VDVFL : String(8);
-    //         VDBFL : String(8);
-    //         VDVZL : String(8);
-    //         VDBZL : String(8);
-    //         PRAT1 : String(1);
-    //         PRAT2 : String(1);
-    //         PRAT3 : String(1);
-    //         PRAT4 : String(1);
-    //         PRAT5 : String(1);
-    //         PRAT6 : String(1);
-    //         PRAT7 : String(1);
-    //         PRAT8 : String(1);
-    //         PRAT9 : String(1);
-    //         PRATA : String(1);
-    //         RDPRF : String(4);
-    //         MEGRU : String(4);
-    //         LFMAX : Decimal(13, 3);
-    //         RJART : String(1);
-    //         PBIND : String(1);
-    //         VAVME : String(1);
-    //         MATKC : String(1);
-    //         PVMSO : String(8);
-    //         BEV1_EMLGRP :String(4);
-    //         BEV1_EMDRCKSPL :String(1);
-    //         BEV1_RPBEZME :String(3);
-    //         BEV1_RPSNS :String(1);
-    //         BEV1_RPSFA :String(1);
-    //         BEV1_RPSKI :String(1);
-    //         BEV1_RPSCO :String(1);
-    //         BEV1_RPSSO :String(1);
-    //         PLGTP : String(2);
-    // }
-
     @cds.persistence.exists
     entity A073 {
         key MANDT : String(3) NOT null;
@@ -199,47 +126,47 @@ context stores {
             VRKME : String(3)
     }
 
-    @cds.persistence.exists
-    entity ADRC {
-        key CLIENT     : String(3);
-        key ADDRNUMBER : String(10);
-        key DATE_FROM  : String(8);
-        key NATION     : String(1);
-            DATE_TO    : String(8);
-            TITLE      : String(4);
-            NAME1      : String(40);
-            NAME2      : String(40);
-            TEL_NUMBER : String(30);
-    }
+    // @cds.persistence.exists
+    // entity ADRC {
+    //     key CLIENT     : String(3);
+    //     key ADDRNUMBER : String(10);
+    //     key DATE_FROM  : String(8);
+    //     key NATION     : String(1);
+    //         DATE_TO    : String(8);
+    //         TITLE      : String(4);
+    //         NAME1      : String(40);
+    //         NAME2      : String(40);
+    //         TEL_NUMBER : String(30);
+    // }
 
-    @cds.persistence.exists
-    entity KNA1 {
-        key KUNNR : String(10);
-            TELF1 : String(16);
-            ADRNR : String(10);
-            KTOKD : String(4);
-            KATR8 : String(3);
-    }
+    // @cds.persistence.exists
+    // entity KNA1 {
+    //     key KUNNR : String(10);
+    //         TELF1 : String(16);
+    //         ADRNR : String(10);
+    //         KTOKD : String(4);
+    //         KATR8 : String(3);
+    // }
 
-    @cds.persistence.exists
-    entity ADR6 {
-        key CLIENT     : String(3);
-        key ADDRNUMBER : String(10);
-        key PERSNUMBER : String(10);
-        key DATE_FROM  : String(8);
-        key CONSNUMBER : String(3);
-            FLGDEFAULT : String(1);
-            FLG_NOUSE  : String(1);
-            HOME_FLAG  : String(1);
-            SMTP_ADDR  : String(241);
-            SMTP_SRCH  : String(20);
-            DFT_RECEIV : String(1);
-            R3_USER    : String(1);
-            ENCODE     : String(1);
-            TNEF       : String(1);
-            VALID_FROM : String(14);
-            VALID_TO   : String(14);
-    }
+    // @cds.persistence.exists
+    // entity ADR6 {
+    //     key CLIENT     : String(3);
+    //     key ADDRNUMBER : String(10);
+    //     key PERSNUMBER : String(10);
+    //     key DATE_FROM  : String(8);
+    //     key CONSNUMBER : String(3);
+    //         FLGDEFAULT : String(1);
+    //         FLG_NOUSE  : String(1);
+    //         HOME_FLAG  : String(1);
+    //         SMTP_ADDR  : String(241);
+    //         SMTP_SRCH  : String(20);
+    //         DFT_RECEIV : String(1);
+    //         R3_USER    : String(1);
+    //         ENCODE     : String(1);
+    //         TNEF       : String(1);
+    //         VALID_FROM : String(14);
+    //         VALID_TO   : String(14);
+    // }
 }
 
 @cds.persistence.calcview
@@ -317,14 +244,14 @@ entity Customer {
 @cds.persistence.calcview
 @cds.persistence.exists
 entity Customer_V1 {
-	CUSTOMERNO: String(10);
-	FIRSTNAME: String(35);
-	LASTNAME: String(35);
-	EMAIL: String(241);
-	DOB: String(8);
-	TEL1NUMBER: String(30);
-	POSTLCOD1: String(10);
-	CITY: String(40);
-	STREET: String(60);
-    KATR8 : String(3);
+	CustomerNo: String(10);
+	Firstname: String(35);
+	Lastname: String(35);
+	Email: String(241);
+	Dob: String(8);
+	Tel1Number: String(30);
+	PostlCod1: String(10);
+	City: String(40);
+	Street: String(60);
+    Katr8 : String(3);
 }

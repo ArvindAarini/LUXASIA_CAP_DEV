@@ -25,9 +25,9 @@ service LuxasiaSB @(
     entity A073                                                                                                                as projection on ss.A073;
     entity KONP                                                                                                                as projection on ss.KONP;
     entity ZSDR_PS_CE_MVKE                                                                                                     as projection on ss.ZSDR_PS_CE_MVKE;
-    entity ADRC                                                                                                                as projection on ss.ADRC;
-    entity KNA1                                                                                                                as projection on ss.KNA1;
-    entity ADR6                                                                                                                as projection on ss.ADR6;
+    // entity ADRC                                                                                                                as projection on ss.ADRC;
+    // entity KNA1                                                                                                                as projection on ss.KNA1;
+    // entity ADR6                                                                                                                as projection on ss.ADR6;
 
     @readonly
     entity Brands                                                                                                              as projection on _Brands;
