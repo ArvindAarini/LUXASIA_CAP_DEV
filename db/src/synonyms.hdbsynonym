@@ -59,7 +59,7 @@
       "object": "CV_Customer"
     }
   },
-  "CUSTOMERV1": {
+  "CUSTOMER_V1": {
     "target": {
       "object": "CV_Customer_V1"
     }

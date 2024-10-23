@@ -52,7 +52,7 @@
 }
 
 ###
-POST http://localhost:42689/luxasia/oDataV4/insert
+POST http://localhost:4004/luxasia/oDataV4/insert
 Content-Type: application/json
 
 {
@@ -61,5 +61,11 @@ Content-Type: application/json
   "name1": "Ashwin", 
   "name2":"Shrimanwar",
   "tel_number":"7766554499", 
-  "smtp_addr" :"Ash@email.com"
+  "smtp_addr" :"Ash@email.com",
+  "marketcon": "Y",
+  "pcode": "000000",
+  "street": "singapore",
+  "tel_number": "345435344",
+  "dob":"/Date(946857600000)/"
+  
 }

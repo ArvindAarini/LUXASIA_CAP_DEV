@@ -60,8 +60,12 @@ service LuxasiaSB @(
     entity Customer as projection on Customers;
     entity Customer_V1 as projection on Customers_V1;
 
-    action insert(kunnr : String,
+    action insert(
+                  mandt:String,
+                  kunnr : String,
                   addrnumber : String,
+                  parnr:String,
+                  dob:String,
                   marketcon:String,
                   client : String,
                   date_from : String,
@@ -69,6 +73,9 @@ service LuxasiaSB @(
                   name1 : String,
                   name2 : String,
                   tel_number : String,
+                  city:String,
+                  pcode:String,
+                  street:String,
                   persnumber : String,
                   consumer : String,
                   smtp_addr : String) returns Integer;

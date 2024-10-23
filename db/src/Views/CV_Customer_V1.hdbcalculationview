@@ -92,13 +92,13 @@
       <viewAttribute id="FIRSTNAME"/>
       <viewAttribute id="LASTNAME"/>
       <viewAttribute id="DOB"/>
-      <viewAttribute id="MARKET_CONSENT"/>
+      <viewAttribute id="KATR8"/>
       <viewAttribute hidden="true" id="JOIN$ADRNR$ADDRNUMBER"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="KNA1">
       <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMERNO" source="KUNNR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MARKET_CONSENT" source="KATR8"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KATR8" source="KATR8"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="FIRSTNAME" source="NAMEV"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LASTNAME" source="NAME1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="DOB" source="GBDAT"/>
@@ -130,7 +130,7 @@
       <descriptions defaultDescription="NAME1"/>
       <keyMapping columnObjectName="Join_1_2" columnName="LASTNAME"/>
     </attribute>
-    <attribute id="E_MAIL" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="EMAIL" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="E_MAIL"/>
       <keyMapping columnObjectName="Join_1_2" columnName="E_MAIL"/>
     </attribute>
@@ -153,6 +153,13 @@
     <attribute id="STREET" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="STREET"/>
       <keyMapping columnObjectName="Join_1_2" columnName="STREET"/>
+    </attribute>
+  
+    <attribute id="KATR8" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MARKET_CONSENT"/>
+  
+      <keyMapping columnObjectName="Join_1_2" columnName="KATR8"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes/>
