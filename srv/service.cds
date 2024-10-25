@@ -4,7 +4,7 @@ using Brands as _Brands from '../db/data-model';
 using Product_Cost from '../db/data-model';
 using Product_StorageUnit from '../db/data-model';
 using Customer as Customers from '../db/data-model';
-using Customer_V1 as Customers_V1 from '../db/data-model';
+using CV_Customer_V1  from '../db/data-model';
 using Purchase_Order from '../db/data-model';
 
 // @requires: 'authenticated-user'
@@ -58,7 +58,12 @@ service LuxasiaSB @(
 
     @readonly
     entity Customer as projection on Customers;
-    entity Customer_V1 as projection on Customers_V1;
+    entity CustomerV1(IP_FNAME : String(35), IP_LNAME : String(35), IP_EMAIL : String(241), IP_TEL_PHONE : String(30)) as 
+        select from CV_Customer_V1 (
+            IP_FNAME: :IP_FNAME, IP_LNAME: :IP_LNAME, IP_EMAIL: :IP_EMAIL, IP_TEL_PHONE: :IP_TEL_PHONE
+        ) {
+            *
+        };
 
     action insert(
                   mandt:String,

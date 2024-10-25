@@ -243,7 +243,7 @@ entity Customer {
 
 @cds.persistence.calcview
 @cds.persistence.exists
-entity Customer_V1 {
+entity CV_Customer_V1 (IP_FNAME : String(35), IP_LNAME : String(35), IP_EMAIL : String(241), IP_TEL_PHONE : String(30)) {
 	CustomerNo: String(10);
 	Firstname: String(35);
 	Lastname: String(35);
