@@ -126,47 +126,6 @@ context stores {
             VRKME : String(3)
     }
 
-    // @cds.persistence.exists
-    // entity ADRC {
-    //     key CLIENT     : String(3);
-    //     key ADDRNUMBER : String(10);
-    //     key DATE_FROM  : String(8);
-    //     key NATION     : String(1);
-    //         DATE_TO    : String(8);
-    //         TITLE      : String(4);
-    //         NAME1      : String(40);
-    //         NAME2      : String(40);
-    //         TEL_NUMBER : String(30);
-    // }
-
-    // @cds.persistence.exists
-    // entity KNA1 {
-    //     key KUNNR : String(10);
-    //         TELF1 : String(16);
-    //         ADRNR : String(10);
-    //         KTOKD : String(4);
-    //         KATR8 : String(3);
-    // }
-
-    // @cds.persistence.exists
-    // entity ADR6 {
-    //     key CLIENT     : String(3);
-    //     key ADDRNUMBER : String(10);
-    //     key PERSNUMBER : String(10);
-    //     key DATE_FROM  : String(8);
-    //     key CONSNUMBER : String(3);
-    //         FLGDEFAULT : String(1);
-    //         FLG_NOUSE  : String(1);
-    //         HOME_FLAG  : String(1);
-    //         SMTP_ADDR  : String(241);
-    //         SMTP_SRCH  : String(20);
-    //         DFT_RECEIV : String(1);
-    //         R3_USER    : String(1);
-    //         ENCODE     : String(1);
-    //         TNEF       : String(1);
-    //         VALID_FROM : String(14);
-    //         VALID_TO   : String(14);
-    // }
 }
 
 @cds.persistence.calcview
@@ -228,17 +187,6 @@ entity Purchase_Order(IP_WERKS : String(4), IP_SUPP_WERKS : String(4), IP_SUPP_V
         BARCODE      : String(18);
         ARTICLETYPE  : String(4);
         AVAILABLEQTY : Decimal(13, 3);
-}
-
-@cds.persistence.calcview
-@cds.persistence.exists
-entity Customer {
-    CUSTOMERNO    : String(10);
-    FIRSTNAME     : String(40);
-    LASTNAME      : String(40);
-    EMAIL         : String(241);
-    TEL1NUMBER    : String(16);
-    MARKETCONSENT : String(3);
 }
 
 @cds.persistence.calcview

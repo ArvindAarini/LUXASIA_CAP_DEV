@@ -54,34 +54,9 @@
       "object": "Product_StorageUnit"
     }
   },
-  "CUSTOMER": {
-    "target": {
-      "object": "CV_Customer"
-    }
-  },
-  "CUSTOMER_V1": {
-    "target": {
-      "object": "CV_Customer_V1"
-    }
-  },
   "PURCHASE_ORDER": {
     "target": {
       "object": "Purchase_Order"
-    }
-  },
-  "STORES_ADRC": {
-    "target": {
-      "object": "ZSDR_ADRC"
-    }
-  },
-  "STORES_ADR6": {
-    "target": {
-      "object": "ADR6"
-    }
-  },
-  "STORES_KNA1": {
-    "target": {
-      "object": "KNA1"
     }
   },
   "CV_CUSTOMER_V1": {

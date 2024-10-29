@@ -25,7 +25,7 @@
   },
   "cds": {
     "requires": {
-      "auth": "dummy",
+      "auth": "xsuaa",
       "db": "hana"
     }
   }
